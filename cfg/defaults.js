@@ -26,7 +26,7 @@ function getDefaultModules() {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+         loader: "style-loader!css-loader!postcss-loader"
       },
       {
         test: /\.sass/,
@@ -57,8 +57,12 @@ function getDefaultModules() {
 }
 
 module.exports = {
+  postcss: function () {
+      return [autoprefixer, precss];
+  },
   srcPath: srcPath,
   publicPath: '/assets/',
   port: dfltPort,
   getDefaultModules: getDefaultModules
+ 
 };
