@@ -14,16 +14,38 @@ imageDatas = (function genImageURL(imageDatasArr) {
 
     return imageDatasArr;
 })(imageDatas);
+
+class ImageFigure extends React.Component {
+  render() {
+    return (
+        <figure className="img-figure">
+            <img src={this.props.data.imageURL}/>
+            <figcaption>
+            <h2 className="img-title">{this.props.data.title}</h2>
+            </figcaption>
+        </figure>
+       
+    );
+  }
+}
+
+
+
  
 class AppComponent extends React.Component {
   render() {
+      var controllerUnits = [],
+       imgFigures = [];
+     imageDatas.forEach(function (value) {
+         imgFigures.push(<ImageFigure data={value} />);
+     });
     return (
         <section className="stage" ref="stage">
             <section className="img-sec">
-                
+                {imgFigures}
             </section>
             <nav className="controller-nav">
-             
+               {controllerUnits}
             </nav>
         </section>
        
